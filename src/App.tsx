@@ -210,9 +210,56 @@ export default function App() {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "es-ES";
-      utterance.rate = 0.9;
-      utterance.pitch = 0.8;
+      
+      // Get all available system voices
+      const voices = window.speechSynthesis.getVoices();
+      
+      // Filter for Spanish language voices
+      const spanishVoices = voices.filter(v => v.lang.toLowerCase().startsWith("es"));
+      
+      // Try to find a male voice first by checking typical male names or keywords
+      let selectedVoice = spanishVoices.find(v => {
+        const name = v.name.toLowerCase();
+        return name.includes("male") || 
+               name.includes("hombre") || 
+               name.includes("raul") || 
+               name.includes("david") || 
+               name.includes("sabino") || 
+               name.includes("pablo") || 
+               name.includes("julio") ||
+               name.includes("jorge") ||
+               name.includes("juan");
+      });
+      
+      // If no male voice is found, try to avoid known female voices
+      if (!selectedVoice) {
+        selectedVoice = spanishVoices.find(v => {
+          const name = v.name.toLowerCase();
+          return !name.includes("female") && 
+                 !name.includes("mujer") && 
+                 !name.includes("sabina") && 
+                 !name.includes("helena") && 
+                 !name.includes("laura");
+        });
+      }
+      
+      // Fallback to the first available Spanish voice if any
+      if (!selectedVoice && spanishVoices.length > 0) {
+        selectedVoice = spanishVoices[0];
+      }
+      
+      if (selectedVoice) {
+        utterance.voice = selectedVoice;
+        utterance.lang = selectedVoice.lang;
+      } else {
+        utterance.lang = "es-ES";
+      }
+
+      // Slower rate for wise/solemn tone (0.75 is perfect for a slow, thoughtful delivery)
+      utterance.rate = 0.75;
+      // Lower pitch for a deeper, older, and more masculine voice
+      utterance.pitch = 0.75; 
+      
       window.speechSynthesis.speak(utterance);
     }
   };
