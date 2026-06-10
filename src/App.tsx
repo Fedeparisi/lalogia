@@ -205,6 +205,18 @@ export default function App() {
     }
   };
 
+  // Web Speech API for Master narration
+  const narrateMessage = (text: string) => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "es-ES";
+      utterance.rate = 0.9;
+      utterance.pitch = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+  };
+
   // Quick preset questions
   const presetQuestions: Record<string, string[]> = {
     intro: [
@@ -1204,9 +1216,20 @@ export default function App() {
                   >
                     {/* Role Tag for aesthetic flair */}
                     {msg.role !== "system" && (
-                      <span className={`text-[8px] uppercase tracking-wider block mb-1 opacity-60 font-mono ${msg.role === "student" ? "text-stone-850 font-bold" : "text-[#d4af37]"}`}>
-                        {msg.role === "student" ? "Hermano Aprendiz" : "Venerable Maestro ∴"}
-                      </span>
+                      <div className="flex justify-between items-center mb-1">
+                        <span className={`text-[8px] uppercase tracking-wider block opacity-60 font-mono ${msg.role === "student" ? "text-stone-850 font-bold" : "text-[#d4af37]"}`}>
+                          {msg.role === "student" ? "Hermano Aprendiz" : "Venerable Maestro ∴"}
+                        </span>
+                        {msg.role === "master" && !chatLoading && (
+                          <button 
+                            onClick={() => narrateMessage(msg.text)}
+                            className="text-[#d4af37]/50 hover:text-[#d4af37] transition-colors ml-3"
+                            title="Escuchar al Maestro"
+                          >
+                            <Volume2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
                     )}
                     {msg.text}
                   </div>
