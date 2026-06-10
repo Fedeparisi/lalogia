@@ -166,13 +166,15 @@ export default function App() {
         })
       });
 
-      if (!response.ok) {
-        throw new Error("La logia celestial no pudo responder en este momento.");
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        data = null;
       }
 
-      const data = await response.json();
-      if (data.error) {
-        throw new Error(data.error);
+      if (!response.ok || (data && data.error)) {
+        throw new Error(data?.error || data?.details || "La logia celestial no pudo responder en este momento.");
       }
 
       setChatHistory(prev => [...prev, { role: "master" as const, text: data.answer }]);
