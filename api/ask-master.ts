@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { lessons } from "./lessonsData";
+import { lessons } from "./lessonsData.js";
 
 let aiInstance: GoogleGenAI | null = null;
 function getGeminiClient(): GoogleGenAI {
