@@ -43,7 +43,7 @@ export const lessons: Record<string, Lesson> = {
     title: "La iniciación masónica",
     subtitle: "El umbral interior y el despertar del neófito",
     category: "Fundamentos",
-    imageUrl: "/iniciacion.png",
+    imageUrl: "/iniciacion.webp",
     content: `
       <p>La <strong>Iniciación Masónica</strong> no es la simple admisión formal a un club social, sino un proceso de alquimia interior que marca la muerte simbólica del hombre profano y el renacimiento espiritual del iniciado. El candidato, despojado de sus metales (prejuicios, riquezas mundanas y dogmas), ingresa ciego y en estado de indefensión al Templo.</p>
 
@@ -60,7 +60,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Orígenes y Tradición",
     subtitle: "De los constructores de catedrales a la masonería especulativa",
     category: "Fundamentos",
-    imageUrl: "/origenes.png",
+    imageUrl: "/origenes.webp",
     content: `
       <p>La Masonería moderna posee una doble raíz: histórica (el gremio operativo medieval) y filosófica (los misterios esotéricos antiguos).</p>
 
@@ -80,7 +80,7 @@ export const lessons: Record<string, Lesson> = {
     title: "La doctrina iniciática",
     subtitle: "El esoterismo puro frente a los dogmas exotéricos",
     category: "Fundamentos",
-    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>A diferencia de las religiones tradicionales de carácter exotérico (público, dogmático y moralizador), la Masonería propone una <strong>Doctrina Iniciática de orden Esotérico</strong> (interno, gradual y vivencial).</p>
 
@@ -98,7 +98,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El principio del G∴A∴D∴U∴",
     subtitle: "La inteligencia cósmica detrás del velo de la creación",
     category: "Fundamentos",
-    imageUrl: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>El <strong>Gran Arquitecto del Universo (G∴A∴D∴U∴)</strong> es el principio divino inteligente que constituye el eje espiritual de la Masonería universal.</p>
 
@@ -113,7 +113,7 @@ export const lessons: Record<string, Lesson> = {
     title: "La Cámara de Reflexiones",
     subtitle: "La prueba de la tierra y el descenso a los infiernos del ego",
     category: "El Proceso",
-    imageUrl: "/camara.png",
+    imageUrl: "/camara.webp",
     content: `
       <p>Antes de ver la luz, el candidato es recluido en un calabozo sombrío: la <strong>Cámara de Reflexiones</strong>, un espacio que representa el descenso a las entrañas del planeta y la muerte biológica del estado profano.</p>
 
@@ -142,7 +142,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Los Tres Viajes",
     subtitle: "La purificación mística a través del aire, el agua y el fuego",
     category: "El Proceso",
-    imageUrl: "/viajes.png",
+    imageUrl: "/viajes.webp",
     content: `
       <p>Al salir de la Cámara de Reflexiones, el neófito realiza tres circunvalaciones sagradas, conocidas como los <strong>Tres Viajes del Aprendiz</strong>, que rememoran los antiguos ritos egipcios.</p>
 
@@ -161,7 +161,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El cáliz de amargura",
     subtitle: "La transmutación del sufrimiento consciente y el juramento sagrado",
     category: "El Proceso",
-    imageUrl: "/caliz.png",
+    imageUrl: "/caliz.webp",
     content: `
       <p>Tras las pruebas elementales, el neófito asume un doble compromiso con sabor agridulce: el <strong>Cáliz de Amargura</strong>, el <strong>Juramento Solemne</strong> y el <strong>Signo Penal</strong>.</p>
 
@@ -178,7 +178,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "El paradigma de la Gran Obra individual",
     category: "El Proceso",
     interactiveType: "stone",
-    imageUrl: "/piedra.png",
+    imageUrl: "/piedra.webp",
     content: `
       <p>El símbolo central del trabajo del Aprendiz es la transformación incesante de la <strong>Piedra Bruta</strong> en una <strong>Piedra Cúbica o Labrada</strong>.</p>
       
@@ -199,9 +199,9 @@ export const lessons: Record<string, Lesson> = {
     title: "El Mandil Masónico",
     subtitle: "La armadura del cantero y el deber del trabajo continuo",
     category: "El Proceso",
-    symbol: "/mandil_symbol.png",
+    symbol: "/mandil_symbol.webp",
     symbolDescription: "El mandil de cuero blanco, emblema ineludible del trabajo puro e incorruptible del masón.",
-    imageUrl: "/mandil.png",
+    imageUrl: "/mandil.webp",
     content: `
       <p>Al iniciarse en los Misterios del Primer Grado de la Masonería, el hermano recibe su insignia fundamental de trabajo moral: el <strong>Mandil Masónico o Delantal</strong>.</p>
 
@@ -221,7 +221,7 @@ export const lessons: Record<string, Lesson> = {
     title: "La marcha del Aprendiz",
     subtitle: "Los tres pasos rectilíneos sobre el templo",
     category: "El Proceso",
-    imageUrl: "/marcha.png",
+    imageUrl: "/marcha.webp",
     content: `
       <p>Bajo las normas de la Masonería especulativa, el movement en el Templo no se realiza al azar. Exige que el hermano ingrese al pórtico sagrado ejecutando la <strong>Marcha del Aprendiz</strong>.</p>
 
@@ -240,7 +240,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La voluntad firme guiada por la inteligencia pura",
     category: "Herramientas",
     interactiveType: "hammer",
-    imageUrl: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>Para desbastar la Piedra Bruta, el Aprendiz recibe dos herramientas de valor inestimable que resultan completamente inútiles si se emplean de forma aislada: el <strong>Mazo</strong> y el <strong>Cincel</strong>.</p>
       
@@ -260,7 +260,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Escuadra, compás y plomada",
     subtitle: "El equilibrio geométrico de la conducta",
     category: "Herramientas",
-    imageUrl: "/escuadra.png",
+    imageUrl: "/escuadra.webp",
     content: `
       <p>La conducta ética y moral del masón no constituye una estimación subjetiva de conveniencia. Se somete al escrutinio estricto de tres joyas geométricas: la <strong>Escuadra</strong>, el <strong>Compás</strong> y la <strong>Plomada</strong>.</p>
       
@@ -280,7 +280,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "El umbral de la Dualidad primordial",
     category: "Herramientas",
     interactiveType: "columns",
-    imageUrl: "/columnas.png",
+    imageUrl: "/columnas.webp",
     content: `
       <p>A las puertas del Templo del Rey Salomón, y flanqueando el umbral de entrada de toda Logia regular, se erigen majestuosas dos columnas imperiales de bronce: <strong>Jakin (J)</strong> y <strong>Boaz (B)</strong>.</p>
       
@@ -301,7 +301,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La gran ley cósmica de los contrastes",
     category: "Herramientas",
     interactiveType: "binary",
-    imageUrl: "/mosaico.png",
+    imageUrl: "/mosaico.webp",
     content: `
       <p>El suelo central que sirve de tapiz y escenario en la Logia está constituido por un tablero ajedrezado con cuadrados alternados de color blanco y de color negro. Este es el venerable <strong>Pavimento de Mosaico</strong>.</p>
       
@@ -323,7 +323,7 @@ export const lessons: Record<string, Lesson> = {
     category: "Herramientas",
     symbol: "🤝",
     symbolDescription: "El toque de unión en la falange de la mano, sutil seña del lazo misterioso entre hermanos.",
-    imageUrl: "/toques.png",
+    imageUrl: "/toques.webp",
     content: `
       <p>La Masonería, heredera legítima de los gremios antiguos de constructores, utiliza un refinado lenguaje mudo para proteger el recinto secreto y constatar el rango moral del hermano: los <strong>Saludos, Señas, Toques y Baterías</strong>.</p>
 
@@ -343,7 +343,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "El Uno (Unidad), el Dos (Dualidad) y el Tres (Síntesis)",
     category: "Filosofía",
     interactiveType: "triad",
-    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La aritmética filosófica de la masonería hunde sus venerables raíces en la teología de Pitágoras de Samos. Para el Aprendiz, la evolución cosmológica de las leyes universales se descifra a través de la emanación de los tres primeros principios matemáticos.</p>
       
@@ -363,7 +363,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La Cabalá cuántica de las letras primordiales",
     category: "Filosofía",
     interactiveType: "letters",
-    imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>Para la doctrina hermética, el lenguaje no representa un convenio utilitario inventado por el hombre para comerciar bienes. El lenguaje es una fuerza cósmica creadora: es el despliegue del <strong>Verbo Divino</strong> creador.</p>
       
@@ -381,7 +381,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La geografía sagrada y anatómica del ser vivo",
     category: "Filosofía",
     interactiveType: "altar",
-    imageUrl: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>En las escuelas antiguas se instruía al iniciado en una verdad radiante: el Templo de Dios es sagrado, y ese templo indomable sois vosotros. La arquitectura de piedra que nos cobija es el plano a escala de la anatomía sutil humana.</p>
       
@@ -406,7 +406,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La ascensión esotérica por los siete centros de poder",
     category: "Filosofía",
     interactiveType: "chakras",
-    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La energía biológica que sustenta la existencia del hermano no debe ser derrochada de forma irracional en la bajeza de los vicios mundanos. Debe ser refinada y guiada a lo largo de un canal perpendicular que se extiende de forma vertical a lo largo de la médula espinal.</p>
       
@@ -421,7 +421,7 @@ export const lessons: Record<string, Lesson> = {
     title: "La logia como cosmos",
     subtitle: "La correspondencia geométrica del plano celeste",
     category: "La Logia",
-    imageUrl: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La Logia Masónica o Templo Secreto no es un simple salón de conferencias decorado con símbolos de la herállica medieval. Es un cosmograma tridimensional calculado con asombrosa precisión matemática para reflejar el orden absoluto del Universo entero.</p>
       
@@ -444,7 +444,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "Sabiduría, Fuerza y Belleza — El soporte cósmico",
     category: "La Logia",
     interactiveType: "triad",
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>El soporte invisible del Universo físico y el sostén ético de toda Logia regular descansa esotéricamente en la presencia mística de tres grandes columnas o <strong>Pilares de Soporte</strong>: la Sabiduría, la Fuerza y la Belleza.</p>
       
@@ -465,7 +465,7 @@ export const lessons: Record<string, Lesson> = {
     category: "La Logia",
     symbol: "⊙",
     symbolDescription: "El triángulo radiante en Oriente que evoca la presencia divina del Ojo del Espíritu que no parpadea jamás.",
-    imageUrl: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>En el plano central de Oriente, presidiendo majestuoso desde las alturas del dosel del Venerable Maestro, brilla el <strong>Delta Luminoso</strong>: un triángulo equilátero que irradia rayos dorados, portando en su centro el Ojo de la Omnisapiencia divina.</p>
       
@@ -483,7 +483,7 @@ export const lessons: Record<string, Lesson> = {
     category: "La Logia",
     symbol: "📖",
     symbolDescription: "La Biblia abierta junto a la Escuadra y el Compás, las tres Grandes Luces que guían los deidades de la logia.",
-    imageUrl: "https://images.unsplash.com/photo-1456953180671-730de08edaa7?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1456953180671-730de08edaa7?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>En el centro geométrico e imán magnético de la Logia, reposa el <strong>Altar de los Juramentos o Ara</strong>. Ante él, los candidatos arrodillados sellan sus compromisos con la Orden.</p>
 
@@ -508,7 +508,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Cosmología y Oficialidad",
     subtitle: "Las doce columnas del Zodíaco y el influjo de las dignidades",
     category: "La Logia",
-    imageUrl: "https://images.unsplash.com/photo-1516339901601-2e1d62dc0c45?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1516339901601-2e1d62dc0c45?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La geografía oculta del Templo Masónico está íntimamente enraizada con las leyes cósmicas invisibles. El firmamento de la Logia se apoya lateralmente sobre <strong>Doce Columnas o Pilastras</strong> ornamentadas que corresponden a los <strong>Doce Signos del Zodíaco</strong>.</p>
 
@@ -529,7 +529,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El secreto y el silencio",
     subtitle: "La sabiduría oculta en los portales herméticos",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>Uno de los juramentos solemnes e inquebrantables del Aprendiz es la conservación absoluta del secreto masónico y la práctica sistemática y rigurosa del silencio.</p>
       
@@ -548,7 +548,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Tolerancia y fraternidad universal",
     subtitle: "El respeto incondicional al sendero ajeno",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La masonería proclama como principio rector irrevocable el imperio de la <strong>Tolerancia Activa</strong> y la <strong>Fraternidad Universal</strong> entre todos los seres de la tierra.</p>
       
@@ -568,7 +568,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El respeto a la ley civil",
     subtitle: "El camino gradual y constructivo del cambio social",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>La Orden Masónica exige a toda su membresía un respeto irrestricto hacia el marco constitucional, la legalidad legítima y la paz social del territorio nacional que le brinda asilo y protección.</p>
       
@@ -585,7 +585,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El salario del aprendiz",
     subtitle: "La recompensa trascendente en la Columna Boaz",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800&h=450",
+    imageUrl: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=600&h=338&q=60",
     content: `
       <p>Tras culminar su jornada de trabajo desbastando con mazo y cincel la Piedra Bruta de su carácter, el Aprendiz es conducido ceremonialmente hacia la <strong>Columna Boaz</strong> para percibir de forma simbólica su justa retribución: su <strong>Salario</strong>.</p>
       

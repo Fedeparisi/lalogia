@@ -88,8 +88,8 @@ export default function App() {
   const handleImageError = () => {
     if (activeLesson && activeLesson.id === "intro") {
       if (currentImageUrl === "/iniciacion.jpg") {
-        setCurrentImageUrl("/iniciacion.png");
-      } else if (currentImageUrl === "/iniciacion.png") {
+        setCurrentImageUrl("/iniciacion.webp");
+      } else if (currentImageUrl === "/iniciacion.webp") {
         setCurrentImageUrl("/iniciacion.jpeg");
       } else if (currentImageUrl === "/iniciacion.jpeg") {
         setCurrentImageUrl("/iniciacion.webp");
