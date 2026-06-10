@@ -8,6 +8,7 @@ import {
   ChevronRight, 
   ChevronLeft, 
   Volume2, 
+  VolumeX, 
   Flame, 
   Trash2, 
   User, 
@@ -41,7 +42,17 @@ export default function App() {
   ]);
   const [chatLoading, setChatLoading] = useState(false);
   const [chatError, setChatError] = useState<string | null>(null);
+  const [currentlySpeakingText, setCurrentlySpeakingText] = useState<string | null>(null);
   const chatBottomRef = useRef<HTMLDivElement>(null);
+
+  // Cancel speech on unmount
+  useEffect(() => {
+    return () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   // Specialized interactive states
   const [stoneRoughness, setStoneRoughness] = useState(100);
@@ -214,8 +225,21 @@ export default function App() {
   // Web Speech API for Master narration
   const narrateMessage = (text: string) => {
     if ("speechSynthesis" in window) {
+      if (currentlySpeakingText === text && window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        setCurrentlySpeakingText(null);
+        return;
+      }
+
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
+
+      utterance.onend = () => {
+        setCurrentlySpeakingText(null);
+      };
+      utterance.onerror = () => {
+        setCurrentlySpeakingText(null);
+      };
       
       // Get all available system voices
       const voices = window.speechSynthesis.getVoices();
@@ -266,6 +290,7 @@ export default function App() {
       // Lower pitch for a deeper, older, and more masculine voice
       utterance.pitch = 0.75; 
       
+      setCurrentlySpeakingText(text);
       window.speechSynthesis.speak(utterance);
     }
   };
@@ -1302,9 +1327,13 @@ export default function App() {
                   <button 
                     onClick={() => narrateMessage(latestMasterMsg.text)}
                     className="text-[#d4af37]/75 hover:text-[#d4af37] hover:bg-white/5 p-1.5 rounded-lg transition-all cursor-pointer"
-                    title="Escuchar última respuesta del Maestro"
+                    title={currentlySpeakingText === latestMasterMsg.text ? "Detener lectura" : "Escuchar última respuesta del Maestro"}
                   >
-                    <Volume2 className="w-4 h-4" />
+                    {currentlySpeakingText === latestMasterMsg.text ? (
+                      <VolumeX className="w-4 h-4 text-rose-500 animate-pulse" />
+                    ) : (
+                      <Volume2 className="w-4 h-4" />
+                    )}
                   </button>
                 )}
                 <Compass className="w-4 h-4 text-[#d4af37]/75 animate-spin-slow" />
@@ -1349,9 +1378,13 @@ export default function App() {
                           <button 
                             onClick={() => narrateMessage(msg.text)}
                             className="text-[#d4af37]/50 hover:text-[#d4af37] transition-colors ml-3"
-                            title="Escuchar al Maestro"
+                            title={currentlySpeakingText === msg.text ? "Detener lectura" : "Escuchar al Maestro"}
                           >
-                            <Volume2 className="w-3.5 h-3.5" />
+                            {currentlySpeakingText === msg.text ? (
+                              <VolumeX className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
+                            ) : (
+                              <Volume2 className="w-3.5 h-3.5" />
+                            )}
                           </button>
                         )}
                       </div>
