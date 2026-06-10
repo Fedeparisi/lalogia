@@ -16,7 +16,9 @@ import {
   HelpCircle,
   Sliders,
   Award,
-  BookMarked
+  BookMarked,
+  Menu,
+  X
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -27,6 +29,10 @@ export default function App() {
     const saved = localStorage.getItem("masonic_viewed_lessons");
     return saved ? JSON.parse(saved) : ["intro"];
   });
+  
+  // Mobile UI state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeMobileTab, setActiveMobileTab] = useState<"lesson" | "chat">("lesson");
   
   // Chat state
   const [question, setQuestion] = useState("");
@@ -335,10 +341,20 @@ export default function App() {
   const latestMasterMsg = [...chatHistory].reverse().find(m => m.role === "master");
 
   return (
-    <div className="flex h-screen w-full bg-[#f5f2ed] font-sans text-stone-900 overflow-hidden leading-relaxed sm:flex-row flex-col">
+    <div className="flex h-screen w-full bg-[#f5f2ed] font-sans text-stone-900 overflow-hidden leading-relaxed flex-col sm:flex-row">
       
+      {/* Backdrop Overlay for mobile sidebar */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/60 sm:hidden" 
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar - Traditional Masonic Lodge Theme with Warm Gold border and Dark background */}
-      <aside className="w-100 sm:w-72 bg-gradient-to-b from-[#1c1a17] to-[#0d0c0a] text-stone-300 flex flex-col shrink-0 border-r border-[#d4af37]/30 sm:h-full max-h-56 sm:max-h-none overflow-hidden">
+      <aside className={`fixed sm:relative inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-[#1c1a17] to-[#0d0c0a] text-stone-300 flex flex-col shrink-0 border-r border-[#d4af37]/30 h-full transition-transform duration-300 sm:translate-x-0 ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      }`}>
         
         {/* Sidebar Header */}
         <div className="p-5 border-b border-[#d4af37]/20 flex items-center justify-between">
@@ -346,6 +362,14 @@ export default function App() {
             <h2 className="font-serif text-xl font-bold text-[#d4af37] tracking-widest leading-none">∴ LA LOGIA ∴</h2>
             <p className="text-[9px] uppercase tracking-[0.25em] text-[#d4af37]/70 mt-1 font-mono font-semibold">Aula del Primer Grado</p>
           </div>
+          <button 
+            type="button"
+            onClick={() => setIsSidebarOpen(false)}
+            className="sm:hidden text-stone-400 hover:text-white p-1 ml-2 cursor-pointer"
+            title="Cerrar menú"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Sidebar Navigation - Grouped by Traditional categories */}
@@ -368,6 +392,7 @@ export default function App() {
                       onClick={() => {
                         setActiveLessonId(lessonId);
                         markAsRead(lessonId);
+                        setIsSidebarOpen(false); // Close mobile drawer
                       }}
                       className={`group p-2.5 rounded-lg transition-all cursor-pointer flex items-center justify-between ${
                         isActive 
@@ -415,17 +440,27 @@ export default function App() {
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         
         {/* Main Header with progress bar */}
-        <header className="h-20 shrink-0 bg-white border-b border-stone-200 px-6 sm:px-8 flex items-center justify-between shadow-xs">
-          <div className="min-w-0 pr-4">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#d4af37] font-mono block">
-              {activeLesson.category}
-            </span>
-            <h1 className="font-serif text-xl sm:text-2xl text-stone-900 truncate font-semibold">
-              {activeLesson.title}
-            </h1>
-            <p className="text-xs text-stone-500 truncate hidden sm:block">
-              {activeLesson.subtitle}
-            </p>
+        <header className="h-20 shrink-0 bg-white border-b border-stone-200 px-4 sm:px-8 flex items-center justify-between shadow-xs">
+          <div className="flex items-center gap-3 min-w-0 pr-4">
+            <button 
+              type="button"
+              onClick={() => setIsSidebarOpen(true)}
+              className="sm:hidden p-2 text-stone-600 hover:text-stone-900 border border-stone-200 hover:border-stone-300 rounded-lg hover:bg-stone-50 transition-all cursor-pointer shrink-0"
+              title="Abrir lecciones"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+            <div className="min-w-0">
+              <span className="text-[10px] uppercase font-bold tracking-widest text-[#d4af37] font-mono block">
+                {activeLesson.category}
+              </span>
+              <h1 className="font-serif text-[15px] sm:text-2xl text-stone-900 truncate font-semibold leading-tight">
+                {activeLesson.title}
+              </h1>
+              <p className="text-xs text-stone-500 truncate hidden sm:block">
+                {activeLesson.subtitle}
+              </p>
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
@@ -457,11 +492,39 @@ export default function App() {
           </div>
         </header>
 
+        {/* Mobile Tab Navigation */}
+        <div className="flex lg:hidden bg-white border-b border-stone-200 shrink-0">
+          <button
+            type="button"
+            onClick={() => setActiveMobileTab("lesson")}
+            className={`flex-1 py-3.5 text-xs font-serif font-bold tracking-wider uppercase text-center border-b-2 transition-all cursor-pointer ${
+              activeMobileTab === "lesson"
+                ? "border-[#d4af37] text-stone-900 bg-stone-50/50"
+                : "border-transparent text-stone-500 hover:text-stone-700"
+            }`}
+          >
+            📖 Lección
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveMobileTab("chat")}
+            className={`flex-1 py-3.5 text-xs font-serif font-bold tracking-wider uppercase text-center border-b-2 transition-all cursor-pointer ${
+              activeMobileTab === "chat"
+                ? "border-[#d4af37] text-stone-900 bg-stone-50/50"
+                : "border-transparent text-stone-500 hover:text-stone-700"
+            }`}
+          >
+            💬 Consultar Maestro
+          </button>
+        </div>
+
         {/* Content Layout - Split viewport with lesson on left, chat on right */}
         <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-0">
           
           {/* Scrollable Lesson Panel */}
-          <section className="col-span-1 lg:col-span-7 overflow-y-auto p-4 sm:p-8 space-y-6">
+          <section className={`col-span-1 lg:col-span-7 overflow-y-auto p-4 sm:p-8 space-y-6 ${
+            activeMobileTab === "lesson" ? "block" : "hidden lg:block"
+          }`}>
             <div className="bg-white p-6 sm:p-10 rounded-2xl shadow-[0_4px_24px_rgba(40,30,10,0.04)] border border-stone-200/60 leading-relaxed text-stone-850">
               
               {/* Lección Hero Banner Image */}
@@ -1206,7 +1269,9 @@ export default function App() {
           </section>
 
           {/* Master Chat Dialog Panel - Deep Muted Warm-Organic dark layout matching the sidebar gradient */}
-          <aside className="col-span-1 lg:col-span-5 shrink-0 border-t lg:border-t-0 lg:border-l border-stone-200 bg-gradient-to-b from-[#1a1815] to-[#12110e] text-stone-200 flex flex-col h-[550px] lg:h-full relative overflow-hidden shadow-2xl">
+          <aside className={`col-span-1 lg:col-span-5 shrink-0 border-t lg:border-t-0 lg:border-l border-stone-200 bg-gradient-to-b from-[#1a1815] to-[#12110e] text-stone-200 flex flex-col h-full relative overflow-hidden shadow-2xl ${
+            activeMobileTab === "chat" ? "flex" : "hidden lg:flex"
+          }`}>
             
             {/* Header of the master responder panel with Master avatar and status */}
             <div className="p-4 bg-black/45 border-b border-[#d4af37]/20 flex items-center justify-between shrink-0">
