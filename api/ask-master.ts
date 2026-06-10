@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import { lessons } from "../src/lessonsData";
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 let aiInstance: GoogleGenAI | null = null;
 function getGeminiClient(): GoogleGenAI {
@@ -21,7 +20,7 @@ function getGeminiClient(): GoogleGenAI {
   return aiInstance;
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
   // CORS support
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
