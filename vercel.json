@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/ask-master",
+      "destination": "/api/ask-master"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
