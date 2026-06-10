@@ -94,14 +94,31 @@ Instrucciones imperativas:
       parts: [{ text: contextualPrompt }]
     });
 
-    const responseStream = await ai.models.generateContentStream({
-      model: "gemini-2.5-flash",
-      contents: contents,
-      config: {
-        systemInstruction: masonicMasterSystemInstruction,
-        temperature: 0.75,
+    const modelsToTry = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
+    let responseStream = null;
+    let lastError = null;
+
+    for (const modelName of modelsToTry) {
+      try {
+        console.log(`Intentando conectar con el Maestro astral usando: ${modelName}`);
+        responseStream = await ai.models.generateContentStream({
+          model: modelName,
+          contents: contents,
+          config: {
+            systemInstruction: masonicMasterSystemInstruction,
+            temperature: 0.75,
+          }
+        });
+        break;
+      } catch (err: any) {
+        console.warn(`Advertencia: Falló el modelo ${modelName}. Detalle:`, err.message || err);
+        lastError = err;
       }
-    });
+    }
+
+    if (!responseStream) {
+      throw lastError || new Error("La conexión celestial con todos los maestros de la Logia falló.");
+    }
 
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     res.setHeader("Transfer-Encoding", "chunked");

@@ -444,7 +444,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "Sabiduría, Fuerza y Belleza — El soporte cósmico",
     category: "La Logia",
     interactiveType: "triad",
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/pilares.png",
     content: `
       <p>El soporte invisible del Universo físico y el sostén ético de toda Logia regular descansa esotéricamente en la presencia mística de tres grandes columnas o <strong>Pilares de Soporte</strong>: la Sabiduría, la Fuerza y la Belleza.</p>
       
@@ -465,7 +465,7 @@ export const lessons: Record<string, Lesson> = {
     category: "La Logia",
     symbol: "⊙",
     symbolDescription: "El triángulo radiante en Oriente que evoca la presencia divina del Ojo del Espíritu que no parpadea jamás.",
-    imageUrl: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/delta.png",
     content: `
       <p>En el plano central de Oriente, presidiendo majestuoso desde las alturas del dosel del Venerable Maestro, brilla el <strong>Delta Luminoso</strong>: un triángulo equilátero que irradia rayos dorados, portando en su centro el Ojo de la Omnisapiencia divina.</p>
       
@@ -483,7 +483,7 @@ export const lessons: Record<string, Lesson> = {
     category: "La Logia",
     symbol: "📖",
     symbolDescription: "La Biblia abierta junto a la Escuadra y el Compás, las tres Grandes Luces que guían los deidades de la logia.",
-    imageUrl: "https://images.unsplash.com/photo-1456953180671-730de08edaa7?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/ara.png",
     content: `
       <p>En el centro geométrico e imán magnético de la Logia, reposa el <strong>Altar de los Juramentos o Ara</strong>. Ante él, los candidatos arrodillados sellan sus compromisos con la Orden.</p>
 
@@ -529,7 +529,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El secreto y el silencio",
     subtitle: "La sabiduría oculta en los portales herméticos",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/secreto.png",
     content: `
       <p>Uno de los juramentos solemnes e inquebrantables del Aprendiz es la conservación absoluta del secreto masónico y la práctica sistemática y rigurosa del silencio.</p>
       
@@ -548,7 +548,7 @@ export const lessons: Record<string, Lesson> = {
     title: "Tolerancia y fraternidad universal",
     subtitle: "El respeto incondicional al sendero ajeno",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/tolerancia.png",
     content: `
       <p>La masonería proclama como principio rector irrevocable el imperio de la <strong>Tolerancia Activa</strong> y la <strong>Fraternidad Universal</strong> entre todos los seres de la tierra.</p>
       
@@ -568,7 +568,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El respeto a la ley civil",
     subtitle: "El camino gradual y constructivo del cambio social",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/ley.png",
     content: `
       <p>La Orden Masónica exige a toda su membresía un respeto irrestricto hacia el marco constitucional, la legalidad legítima y la paz social del territorio nacional que le brinda asilo y protección.</p>
       
@@ -585,7 +585,7 @@ export const lessons: Record<string, Lesson> = {
     title: "El salario del aprendiz",
     subtitle: "La recompensa trascendente en la Columna Boaz",
     category: "Ética",
-    imageUrl: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/salario.png",
     content: `
       <p>Tras culminar su jornada de trabajo desbastando con mazo y cincel la Piedra Bruta de su carácter, el Aprendiz es conducido ceremonialmente hacia la <strong>Columna Boaz</strong> para percibir de forma simbólica su justa retribución: su <strong>Salario</strong>.</p>
       
