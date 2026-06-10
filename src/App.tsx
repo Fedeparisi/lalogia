@@ -166,18 +166,36 @@ export default function App() {
         })
       });
 
-      let data;
-      try {
-        data = await response.json();
-      } catch (e) {
-        data = null;
-      }
-
-      if (!response.ok || (data && data.error)) {
+      if (!response.ok) {
+        let data;
+        try {
+          data = await response.json();
+        } catch (e) {
+          data = null;
+        }
         throw new Error(data?.error || data?.details || "La logia celestial no pudo responder en este momento.");
       }
 
-      setChatHistory(prev => [...prev, { role: "master" as const, text: data.answer }]);
+      setChatHistory(prev => [...prev, { role: "master" as const, text: "" }]);
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      if (!reader) throw new Error("No se pudo iniciar el canal de transmisión.");
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunkText = decoder.decode(value, { stream: true });
+        setChatHistory(prev => {
+          const newArr = [...prev];
+          const lastIndex = newArr.length - 1;
+          newArr[lastIndex] = { 
+            ...newArr[lastIndex], 
+            text: newArr[lastIndex].text + chunkText 
+          };
+          return newArr;
+        });
+      }
     } catch (err: any) {
       console.error(err);
       setChatError(err.message || "Ocurrió un error al contactar al Venerable Maestro.");
@@ -387,8 +405,9 @@ export default function App() {
               
               {/* Lección Hero Banner Image */}
               {currentImageUrl && (
-                <div className="w-full h-48 sm:h-64 rounded-xl overflow-hidden mb-8 shadow-md border border-stone-200 relative group shrink-0">
+                <div className="w-full h-48 sm:h-64 bg-stone-200 rounded-xl overflow-hidden mb-8 shadow-md border border-stone-200 relative group shrink-0">
                   <img 
+                    key={currentImageUrl}
                     src={currentImageUrl} 
                     alt={activeLesson.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

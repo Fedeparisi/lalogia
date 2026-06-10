@@ -95,7 +95,7 @@ Instrucciones imperativas:
       parts: [{ text: contextualPrompt }]
     });
 
-    const response = await ai.models.generateContent({
+    const responseStream = await ai.models.generateContentStream({
       model: "gemini-2.5-flash",
       contents: contents,
       config: {
@@ -104,8 +104,13 @@ Instrucciones imperativas:
       }
     });
 
-    const answer = response.text || "La luz de la sabiduría permanece silenciosa en este momento. Inténtalo de nuevo, Hermano.";
-    res.status(200).json({ answer });
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Transfer-Encoding", "chunked");
+
+    for await (const chunk of responseStream) {
+      res.write(chunk.text);
+    }
+    res.end();
 
   } catch (err: any) {
     console.error("Error al consultar el Maestro de Logia:", err);
