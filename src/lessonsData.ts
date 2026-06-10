@@ -343,7 +343,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "El Uno (Unidad), el Dos (Dualidad) y el Tres (Síntesis)",
     category: "Filosofía",
     interactiveType: "triad",
-    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/numeros.webp",
     content: `
       <p>La aritmética filosófica de la masonería hunde sus venerables raíces en la teología de Pitágoras de Samos. Para el Aprendiz, la evolución cosmológica de las leyes universales se descifra a través de la emanación de los tres primeros principios matemáticos.</p>
       
@@ -363,7 +363,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La Cabalá cuántica de las letras primordiales",
     category: "Filosofía",
     interactiveType: "letters",
-    imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/verbo.webp",
     content: `
       <p>Para la doctrina hermética, el lenguaje no representa un convenio utilitario inventado por el hombre para comerciar bienes. El lenguaje es una fuerza cósmica creadora: es el despliegue del <strong>Verbo Divino</strong> creador.</p>
       
@@ -381,7 +381,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La geografía sagrada y anatómica del ser vivo",
     category: "Filosofía",
     interactiveType: "altar",
-    imageUrl: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/tabernaculo.webp",
     content: `
       <p>En las escuelas antiguas se instruía al iniciado en una verdad radiante: el Templo de Dios es sagrado, y ese templo indomable sois vosotros. La arquitectura de piedra que nos cobija es el plano a escala de la anatomía sutil humana.</p>
       
@@ -406,7 +406,7 @@ export const lessons: Record<string, Lesson> = {
     subtitle: "La ascensión esotérica por los siete centros de poder",
     category: "Filosofía",
     interactiveType: "chakras",
-    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=600&h=338&q=60",
+    imageUrl: "/fuego.webp",
     content: `
       <p>La energía biológica que sustenta la existencia del hermano no debe ser derrochada de forma irracional en la bajeza de los vicios mundanos. Debe ser refinada y guiada a lo largo de un canal perpendicular que se extiende de forma vertical a lo largo de la médula espinal.</p>
       
