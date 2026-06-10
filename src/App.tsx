@@ -285,6 +285,8 @@ export default function App() {
     }
   };
 
+  const latestMasterMsg = [...chatHistory].reverse().find(m => m.role === "master");
+
   return (
     <div className="flex h-screen w-full bg-[#f5f2ed] font-sans text-stone-900 overflow-hidden leading-relaxed sm:flex-row flex-col">
       
@@ -1183,7 +1185,18 @@ export default function App() {
                   </p>
                 </div>
               </div>
-              <Compass className="w-4 h-4 text-[#d4af37]/75 animate-spin-slow" />
+              <div className="flex items-center gap-3">
+                {latestMasterMsg && !chatLoading && (
+                  <button 
+                    onClick={() => narrateMessage(latestMasterMsg.text)}
+                    className="text-[#d4af37]/75 hover:text-[#d4af37] hover:bg-white/5 p-1.5 rounded-lg transition-all cursor-pointer"
+                    title="Escuchar última respuesta del Maestro"
+                  >
+                    <Volume2 className="w-4 h-4" />
+                  </button>
+                )}
+                <Compass className="w-4 h-4 text-[#d4af37]/75 animate-spin-slow" />
+              </div>
             </div>
 
             {/* Chat Body container */}
