@@ -1,14 +1,44 @@
 import { GoogleGenAI } from "@google/genai";
 import { lessons } from "./lessonsData.js";
 
-let aiInstance: GoogleGenAI | null = null;
-function getGeminiClient(): GoogleGenAI {
-  if (!aiInstance) {
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req: Request) {
+  // CORS support
+  if (req.method === "OPTIONS") {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+      }
+    });
+  }
+
+  if (req.method !== "POST") {
+    return Response.json({ error: "Método no permitido" }, { status: 405 });
+  }
+
+  try {
+    const { question, lessonId, history } = await req.json();
+
+    if (!question || typeof question !== "string") {
+      return Response.json({ error: "La pregunta es requerida y debe ser un texto." }, { status: 400 });
+    }
+
     const key = process.env.GEMINI_API_KEY;
     if (!key) {
-      throw new Error("GEMINI_API_KEY no se encuentra configurada en el panel de secretos.");
+      return Response.json({
+        error: "Servicio de Sabiduría no disponible temporalmente.",
+        details: "Falta la clave de la API en la configuración del servidor."
+      }, { status: 500 });
     }
-    aiInstance = new GoogleGenAI({
+
+    const ai = new GoogleGenAI({
       apiKey: key,
       httpOptions: {
         headers: {
@@ -16,48 +46,6 @@ function getGeminiClient(): GoogleGenAI {
         }
       }
     });
-  }
-  return aiInstance;
-}
-
-export default async function handler(req: any, res: any) {
-  // CORS support
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
-
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
-
-  if (req.method !== "POST") {
-    res.status(405).json({ error: "Método no permitido" });
-    return;
-  }
-
-  try {
-    const { question, lessonId, history } = req.body;
-
-    if (!question || typeof question !== "string") {
-      res.status(400).json({ error: "La pregunta es requerida y debe ser un texto." });
-      return;
-    }
-
-    let ai;
-    try {
-      ai = getGeminiClient();
-    } catch (err: any) {
-      res.status(500).json({
-        error: "Servicio de Sabiduría no disponible temporalmente.",
-        details: err.message || "Falta la clave de la API en la configuración del servidor."
-      });
-      return;
-    }
 
     const masonicMasterSystemInstruction = `Eres un venerable y sabio Maestro Masón del Primer Grado de la Masonería (Aprendiz). Te manifiestas bajo la imagen del Venerable Maestro celestial: un honorable sabio anciano de majestuosa barba blanca y túnica celestial de azul místico con bordados de oro, presidiendo solemnemente desde su trono del templo rodeado por el infinito firmamento y las espirales del cosmos. Sostienes la escuadra y el compás para ornar tus reflexiones y delimitar las pasiones humanas. Respondes a las consultas de tus hermanos o candidatos profanos con de respetuosa sabiduría, extrema paciencia, tono fraternal, místico y digno.
 
@@ -104,19 +92,36 @@ Instrucciones imperativas:
       }
     });
 
-    res.setHeader("Content-Type", "text/plain; charset=utf-8");
-    res.setHeader("Transfer-Encoding", "chunked");
+    // Create a ReadableStream from the generator
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of responseStream) {
+            if (chunk.text) {
+              controller.enqueue(encoder.encode(chunk.text));
+            }
+          }
+          controller.close();
+        } catch (e) {
+          controller.error(e);
+        }
+      }
+    });
 
-    for await (const chunk of responseStream) {
-      res.write(chunk.text);
-    }
-    res.end();
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
 
   } catch (err: any) {
     console.error("Error al consultar el Maestro de Logia:", err);
-    res.status(500).json({
+    return Response.json({
       error: "Ocurrió una turbulencia en la transmisión de la Logia.",
       details: err.message || "Error interno del servidor."
-    });
+    }, { status: 500, headers: { "Access-Control-Allow-Origin": "*" } });
   }
 }
