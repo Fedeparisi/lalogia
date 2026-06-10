@@ -1,0 +1,6 @@
+{
+  "name": "Aula Masónica",
+  "description": "Aula interactiva para la exploración y el aprendizaje de las ricas enseñanzas y símbolos del Primer Grado de la Masonería.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

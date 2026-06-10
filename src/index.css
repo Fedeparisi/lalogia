@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Cinzel", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-gold-50: #fefcf3;
+  --color-gold-100: #fef7db;
+  --color-gold-200: #fce8a6;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #be9d2e;
+  --color-gold-700: #a18320;
+  --color-gold-950: #332704;
+}
+
+/* Base custom styles to represent elegant transitions and scrollbars */
+html, body {
+  background-color: #f5f2ed;
+  color: #1a1a1a;
+}
+
+/* Theme Helper Classes from Warm Organic / Cultural Mock */
+.serif {
+  font-family: 'Cinzel', 'Georgia', serif;
+}
+.gold-border {
+  border-color: #d4af37;
+}
+.gold-text {
+  color: #d4af37;
+}
+.sidebar-gradient {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+.masonic-shadow {
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.active-lesson {
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid #d4af37;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 160, 120, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 160, 120, 0.4);
+}
+
+/* Fade animation for lesson swapping */
+.lesson-fade-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.lesson-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
